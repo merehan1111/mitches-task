@@ -34,8 +34,9 @@ const newsData = [
 const Projects = () => {
   const sectionRef = useRef(null);
   const progressRef = useRef(null);
-  const cardsRef = useRef([]);
+
   const [currentIndex, setCurrentIndex] = useState(0);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     gsap.from(cardsRef.current, {
@@ -97,7 +98,9 @@ const Projects = () => {
           {newsData.map((news, index) => (
             <div
               key={news.id}
-              ref={(el) => (cardsRef.current[index] = el)}
+              ref={(el) => {
+                if (el) cardsRef.current[index] = el;
+              }}
               className="w-[91%] md:w-[44%] flex-shrink-0 bg-white rounded-lg  shadow-lg overflow-hidden mr-3 md:mx-2 "
             >
               <img src={news.image} alt={news.title}   className="w-full h-auto md:h-[320px] object-cover aspect-[18/9]"
