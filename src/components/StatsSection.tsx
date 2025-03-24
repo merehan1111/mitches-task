@@ -63,7 +63,7 @@ const StatsSection = () => {
           className="flex flex-col md:flex-row  justify-between mb-10 pb-6 border-b border-gray-500/10"
         >
           {/* صورة */}
-          <div className="w-full md:w-1/3">
+          <div className="w-full md:w-1/2 lg:w-1/3">
             <img
               src={stat.image}
               alt={stat.title}
@@ -72,8 +72,8 @@ const StatsSection = () => {
           </div>
 
           {/* النصوص */}
-          <div className="w-full md:w-2/5 ml-auto  flex flex-col items-start text-left">
-            <h2 className="text-[28px] md:text-[40px] font-medium text-black w-full">
+          <div className="w-full md:w-2/5 lg:w-2/5 ml-auto  flex flex-col items-start text-left">
+            <h2 className="text-[28px] md:text-[30px] lg:text-[40px] font-medium text-black w-full">
               {stat.number}
             </h2>
 

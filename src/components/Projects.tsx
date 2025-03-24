@@ -97,7 +97,7 @@ const Projects = () => {
         {/* Left Button */}
         <button
           onClick={handlePrev}
-          className={`absolute left-0 top-1/3 transform -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-md z-20 hidden md:block ${
+          className={`absolute lg:left-0 lg:top-1/3   md:top-1/4 transform -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-md z-20 hidden md:block ${
             currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "opacity-100"
           }`}
           disabled={currentIndex === 0}
@@ -120,11 +120,11 @@ const Projects = () => {
                 width: `${100 / cardsPerView}%`,
               }}
             >
-                           <img src={news.image} alt={news.title}   className="w-full h-auto md:h-[320px] object-cover aspect-[18/9]"
+                           <img src={news.image} alt={news.title}   className="w-full h-auto  md:h-[180px] lg:h-[320px] object-cover aspect-[18/9]"
  />
                <div className="p-4 ">
                 <p className="text-[16px] text-[#777777]">{news.date}</p>
-                <h3 className="text-[28px] md:text-[41px] mt-3 font-medium leading-[125%]">
+                <h3 className="text-[28px] md:text-[30px] lg:text-[41px] mt-3 font-medium leading-[125%]">
                   {news.title}
                 </h3>
                 <p className="text-black text-[16px] md:text-[20px] mt-3 md:mt-2">{news.description}</p>
@@ -136,7 +136,7 @@ const Projects = () => {
         {/* Right Button */}
         <button
           onClick={handleNext}
-          className={`absolute right-3 top-1/3 transform -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-md z-20 hidden md:block ${
+          className={`absolute right-3 lg:top-1/3  md:top-1/4 transform -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-md z-20 hidden md:block ${
             currentIndex >= newsData.length - cardsPerView ? "opacity-50 cursor-not-allowed" : "opacity-100"
           }`}
           disabled={currentIndex >= newsData.length - cardsPerView}

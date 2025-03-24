@@ -37,14 +37,14 @@ const Location = () => {
   return (
     <div className="w-full py-12 px-4 sm:px-6 md:px-12 bg-white">
       {/* Main Container */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start">
+      <div className="grid grid-cols-1  md:grid-cols-3 gap-6 md:gap-8 items-start">
         {/* Left Section - Title */}
         <h2 className="text-[#777777] text-[22px] md:text-[28px] ml-1 md:ml-6">
           Our Approach
         </h2>
 
         {/* Right Section - Accordion */}
-        <div className="md:col-span-2 max-w-2xl md:ml-35 rounded-md overflow-hidden">
+        <div className="md:col-span-2 md:max-w-2xl  lg:ml-35 md:ml-30 rounded-md overflow-hidden">
           {items.map((item, index) => (
             <div key={index} className="flex flex-col items-start">
               {/* Header */}

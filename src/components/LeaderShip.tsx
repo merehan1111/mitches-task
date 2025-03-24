@@ -55,7 +55,7 @@ const LeaderShip = () => {
       <div className="flex justify-end w-full  md:mr-10 lg:mr-24">
         <p
           ref={textRef}
-          className="text-[28px] mt-4 md:mt-0 md:text-[38px] font-medium leading-[1.25] tracking-normal text-black max-w-lg"
+          className="text-[28px] mt-4 md:mt-0 md:text-[27px] lg:text-[38px] font-medium leading-[1.25] tracking-normal text-black max-w-lg"
           style={{ fontFamily: "Helvetica Now Display" }}
         >
           We aim to innovate and listen closely

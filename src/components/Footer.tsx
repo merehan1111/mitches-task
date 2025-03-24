@@ -54,7 +54,7 @@ const Footer = () => {
         {/* Brand & Interest Form */}
         <div className="flex flex-col md:flex-row justify-between items-start mt-8 md:mt-12">
        
-          <h2 className="text-3xl md:text-6xl lg:text-8xl  whitespace-nowrap relative top-72 md:top-35 font-bold tracking-wider">
+          <h2 className="text-3xl md:text-4xl lg:text-8xl  whitespace-nowrap relative top-72  md:top-35 font-bold tracking-wider">
             G Developments
           </h2>
           <div className="md:mt-6 mt-[-20px] lg:mt-6 lg:mr-32 md:mr-32">

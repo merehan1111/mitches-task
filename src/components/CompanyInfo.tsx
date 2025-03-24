@@ -55,7 +55,7 @@ const CompanyInfo = () => {
       <div className="flex justify-end w-full md:mr-10 lg:mr-26">
         <p
           ref={textRef}
-          className="text-[28px] md:text-[30px] font-medium leading-[1.25] tracking-normal text-black max-w-lg"
+          className="text-[28px] md:text-[20px] lg:text-[30px] font-medium leading-[1.25] tracking-normal text-black max-w-lg"
           style={{ fontFamily: "Helvetica Now Display" }}
         >
           We are a family-owned real estate development company based in Egypt.

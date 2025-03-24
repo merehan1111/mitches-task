@@ -5,7 +5,7 @@ const InquirySection = () => {
         
         {/* Text Section */}
         <div className="w-full md:flex-1 text-start md:text-left">
-          <h2 className="text-[26px] md:text-[40px] font-medium leading-snug">
+          <h2 className="text-[26px] md:text-[27px] lg:text-[40px] font-medium leading-snug">
             Are you interested in a property or <br className="hidden md:block"/> have any other inquiries?
           </h2>
         </div>
