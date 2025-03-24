@@ -53,14 +53,14 @@ const StatsSection = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="mx-auto px-4 md:px-10 py-10">
+    <div ref={sectionRef} className="max-w-8xl mx-auto px-4 md:px-10 py-15">
       {statsData.map((stat, index) => (
         <div
           key={stat.id}
           ref={(el) => {
             itemsRef.current[index] = el;
           }}
-          className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-24 mb-10 pb-6 border-b border-gray-500/10"
+          className="flex flex-col md:flex-row  justify-between mb-10 pb-6 border-b border-gray-500/10"
         >
           {/* صورة */}
           <div className="w-full md:w-1/3">
@@ -72,25 +72,16 @@ const StatsSection = () => {
           </div>
 
           {/* النصوص */}
-          <div className="w-full md:w-2/3 flex flex-col items-start text-left mt-1 md:mt-0 md:ml-80 md:pl-24">
-            <h2
-              className="text-[28px] md:text-[40px] leading-[125%] tracking-[0%] font-medium text-black w-full self-start"
-              style={{ fontFamily: "Helvetica Now Display" }}
-            >
+          <div className="w-full md:w-2/5 ml-auto  flex flex-col items-start text-left">
+            <h2 className="text-[28px] md:text-[40px] font-medium text-black w-full">
               {stat.number}
             </h2>
 
-            <p
-              className="text-[24px] md:text-[28px] leading-[125%] tracking-[0%] font-medium text-gray-700 w-full self-start"
-              style={{ fontFamily: "Helvetica Now Display" }}
-            >
+            <p className="text-[24px] md:text-[28px] mt-3 md:mt-5 font-medium text-gray-700 w-full">
               {stat.title}
             </p>
 
-            <p
-              className="text-[14px] md:text-[16px] leading-[140%] tracking-[0%] mt-2 md:mt-6 font-normal md:font-[325] text-gray-500 w-full max-w-lg self-start"
-              style={{ fontFamily: "Helvetica Now Text" }}
-            >
+            <p className="text-[14px] md:text-[16px] text-gray-500 w-full max-w-lg mt-2 md:mt-4">
               {stat.description}
             </p>
           </div>

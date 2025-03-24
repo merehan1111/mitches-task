@@ -77,20 +77,20 @@ const TeamCarousel = () => {
   };
 
   return (
-    <div className="relative w-full py-20 md:py-16 px-4 md:px-11 mx-auto">
+    <div className="relative w-full py-16 px-4 md:px-11 mx-auto">
       {/* Navigation Arrows - Hidden on Mobile */}
       <button
         onClick={scrollLeft}
-        className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 bg-black p-2 md:p-3 rounded-full shadow-md hover:scale-110 transition-all z-10"
+        className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 bg-black p-3 rounded-full shadow-md hover:scale-110 transition-all z-10"
       >
-        <FaChevronLeft className="text-white text-sm md:text-lg" />
+        <FaChevronLeft className="text-white text-lg" />
       </button>
 
       <button
         onClick={scrollRight}
-        className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 bg-black p-2 md:p-3 rounded-full shadow-md hover:scale-110 transition-all z-10"
+        className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 bg-black p-3 rounded-full shadow-md hover:scale-110 transition-all z-10"
       >
-        <FaChevronRight className="text-white text-sm md:text-lg" />
+        <FaChevronRight className="text-white text-lg" />
       </button>
 
       {/* Team Members */}
@@ -104,7 +104,7 @@ const TeamCarousel = () => {
             ref={(el) => {
               itemsRef.current[index] = el;
             }}
-            className="relative flex-shrink-0 w-4/5 bg-[#F6F6F6] md:w-1/3 h-[350px] md:h-[400px] rounded-lg shadow-lg overflow-hidden"
+            className="relative flex-shrink-0 w-[90%] sm:w-[70%] md:w-[45%] lg:w-[35%] h-auto min-h-[300px] sm:min-h-[350px] md:min-h-[400px] bg-[#F6F6F6] rounded-lg shadow-lg overflow-hidden"
           >
             <img
               src={member.image}
@@ -113,21 +113,19 @@ const TeamCarousel = () => {
             />
 
             {/* Overlay Text */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 bg-white text-black p-5 rounded-md w-[90%] pl-6 ">
-            <h3 className=" font-medium text-[28px] md:text-[40px] leading-[125%] tracking-[0%]">
-  {member.name}
-</h3>
-
-<p className=" font-medium text-[20px] leading-[125%] tracking-[0%]">
-  {member.position}
-</p>
-
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white text-black p-4 sm:p-5 rounded-md w-[80%] sm:w-[90%] lg:w-[75%]">
+              <h3 className="font-medium text-[22px] sm:text-[28px] md:text-[32px] lg:text-[36px] leading-[125%]">
+                {member.name}
+              </h3>
+              <p className="font-medium text-[16px] sm:text-[20px] leading-[125%]">
+                {member.position}
+              </p>
             </div>
 
             {/* Mobile Scroll Button */}
             <button
               onClick={() => scrollToNextCard(index)}
-              className="absolute top-59 right-4 bg-black p-2 rounded-full shadow-md md:hidden hover:scale-110 transition-all"
+              className="absolute top-2/3 right-4 bg-black p-2 rounded-full shadow-md md:hidden hover:scale-110 transition-all"
             >
               <FaPlus className="text-white text-lg" />
             </button>
@@ -147,4 +145,3 @@ const TeamCarousel = () => {
 };
 
 export default TeamCarousel;
-

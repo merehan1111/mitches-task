@@ -5,33 +5,10 @@ import gsap from "gsap";
 import { ArrowUp } from "lucide-react";
 
 const Footer = () => {
-  const footerRef = useRef<HTMLDivElement | null>(null);
-  const arrowRef = useRef<HTMLAnchorElement | null>(null);
+  const footerRef = useRef(null);
+  const arrowRef = useRef(null);
 
   useEffect(() => {
-    // تحريك السهم للأعلى والأسفل بشكل مستمر
-    if (arrowRef.current) {
-      gsap.to(arrowRef.current, {
-        y: -10, // يرتفع بمقدار 10 بكسل
-        repeat: -1, // التكرار لا نهائي
-        yoyo: true, // يرجع للوضع الأصلي بعد كل حركة
-        duration: 0.8, // مدة الحركة
-        ease: "power1.inOut", // تأثير ناعم
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    // Animation for Footer
-    if (footerRef.current) {
-      gsap.fromTo(
-        footerRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
-      );
-    }
-
-    // Floating Arrow Animation
     if (arrowRef.current) {
       gsap.to(arrowRef.current, {
         y: -10,
@@ -43,11 +20,25 @@ const Footer = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (footerRef.current) {
+      gsap.fromTo(
+        footerRef.current,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+      );
+    }
+  }, []);
+
   return (
-    <footer ref={footerRef} className="bg-black text-white py-6 px-6 md:px-16 relative">
-      <div className="max-w-7xl mx-auto">
+    <footer
+      ref={footerRef}
+      className="bg-black text-white py-10 px-4 md:px-8 lg:px-16 relative"
+    >
+      <div className=" mx-auto">
         {/* Navigation Links */}
-        <nav className="flex flex-col md:flex-row md:space-x-14 text-white text-[14px] md:text-[16px] text-left space-y-3 md:space-y-0 mt-4 md:mt-0">
+        {/* Navigation Links */}
+        <nav className="flex flex-col lg:flex-row md:flex-row md:space-x-14 text-white text-[14px] md:text-[16px] text-left space-y-3 md:space-y-0 mt-4 md:mt-0">
           <a href="#" className="font-bold tracking-wide hover:text-gray-400">About us</a>
           <a href="#" className="font-bold tracking-wide hover:text-gray-400">Our Communities</a>
           <a href="#" className="font-bold tracking-wide hover:text-gray-400">Latest Updates</a>
@@ -58,38 +49,42 @@ const Footer = () => {
           <div className="border-b border-gray-600 mt-4 md:hidden"></div>
         </nav>
 
-        {/* Main Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start mt-0 md:mt-12">
-          {/* Left - Brand Name */}
-          <h2 className="text-[39px] md:text-[100px] font-bold relative top-70 md:top-35 tracking-wide md:tracking-[8px] md:order-first">
+
+
+        {/* Brand & Interest Form */}
+        <div className="flex flex-col md:flex-row justify-between items-start mt-8 md:mt-12">
+       
+          <h2 className="text-3xl md:text-6xl lg:text-8xl  whitespace-nowrap relative top-72 md:top-35 font-bold tracking-wider">
             G Developments
           </h2>
-
-          {/* Right - Interest Form */}
-          <div className="md:mt-6 mt-[-30px] md:mr-35">
-            <h3 className="text-white uppercase tracking-wider text-[12px] md:text-[14px] mb-2">INTEREST FORM</h3>
-            <p className="text-white text-[16px] mt-5">Looking for something specific?</p>
-            <a href="#" className="text-white text-[16px] font-medium hover:underline flex items-center mt-1">
+          <div className="md:mt-6 mt-[-20px] lg:mt-6 lg:mr-32 md:mr-32">
+            <h3 className="text-white uppercase tracking-wider text-sm md:text-base mb-2">
+              INTEREST FORM
+            </h3>
+            <p className="text-white text-base mt-2">Looking for something specific?</p>
+            <a href="#" className="text-white text-base font-medium hover:underline flex items-center mt-1">
               Submit Your Interest →
             </a>
           </div>
         </div>
 
-        {/* Back to Top Icon (Moved to Top Right) */}
-        <div className="absolute top-2 right-12">
+        {/* Back to Top Icon */}
+        <div className="absolute top-4 right-6 md:right-12">
           <a ref={arrowRef} href="#" className="p-2 rounded-full text-white shadow-lg">
             <ArrowUp size={30} />
           </a>
         </div>
 
-           {/* Middle Section (Aligned to Right) */}
-           <div className="flex justify-start  md:justify-end mt-12">
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-6 md:gap-2">
+        {/* Social & Contact Info */}
+       {/* Middle Section */}
+       <div className="flex justify-start md:justify-end mt-12">
+          <div className="grid grid-cols-2 gap-6 md:gap-0">
+            
             {/* Social Links */}
             <div>
               <h3 className="text-white uppercase text-[12px] md:text-[14px] tracking-wider mb-2">SOCIAL</h3>
               <ul className="space-y-1 text-[14px] md:text-[16px]">
-                <li><a href="#" className="hover:underline ">Instagram</a></li>
+                <li><a href="#" className="hover:underline">Instagram</a></li>
                 <li><a href="#" className="hover:underline">LinkedIn</a></li>
                 <li><a href="#" className="hover:underline">Facebook</a></li>
               </ul>
@@ -97,31 +92,32 @@ const Footer = () => {
 
             {/* Contact Info */}
             <div>
-              <h3 className="text-white text-[12px] md:text-[14px] uppercase tracking-wider mb-2">CONTACT INFO</h3>
+              <h3 className="text-white uppercase text-[12px] md:text-[14px] tracking-wider mb-2">CONTACT INFO</h3>
               <p className="text-white text-[14px] md:text-[16px]">info@gdevelopments.com</p>
               <p className="text-white text-[14px] md:text-[16px]">16738</p>
             </div>
           </div>
         </div>
-   
 
-        {/* Bottom Section */}
-        <div className="md:mt-12 mt-22  border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-start text-white">
-          {/* القسم الأيسر */}
-          <div className="flex flex-col md:flex-row md:items-center text-[10px] md:text-[14px] space-y-2 md:space-y-0 md:space-x-4">
+     
+        <div className="md:mt-12 mt-24 border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between text-white">
+          
+          {/* Left Section */}
+          <div className="flex flex-col md:flex-row md:items-center text-[12px] md:text-[14px] space-y-2 md:space-y-0 md:space-x-6">
             <p>© 2024 G Developments. All rights reserved.</p>
-            <div className="flex md:space-x-12 space-x-3">
-              <a href="#" className="hover:underline md:ml-5">Privacy</a>
+            <div className="flex md:space-x-6 space-x-3">
+              <a href="#" className="hover:underline">Privacy</a>
               <a href="#" className="hover:underline">Terms & Conditions</a>
             </div>
           </div>
 
-          {/* القسم الأيمن */}
-          <p className="mt-2 md:mt-0 text-[10px] md:text-[14px]">
+          {/* Right Section */}
+          <p className="mt-2 md:mt-0 text-[12px] md:text-[14px]">
             Website by <a href="#" className="text-white hover:underline">Mitch Designs</a>
           </p>
         </div>
       </div>
+      
     </footer>
   );
 };
