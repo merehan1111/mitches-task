@@ -22,15 +22,16 @@
 body {
   background: #FFFFFf;
   font-family: "Helvetica Now Display";
+  
 }
-.no-scrollbar {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
 .flex.overflow-x-auto {
   max-width: 100%;
   overflow-x: hidden;

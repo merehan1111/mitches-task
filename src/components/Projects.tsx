@@ -47,11 +47,11 @@ const Projects = () => {
   useEffect(() => {
     const updateCardsPerView = () => {
       if (window.innerWidth >= 1024) {
-        setCardsPerView(2.1); // Large screens: show 2 full cards + small part of the 3rd
+        setCardsPerView(2.5); // Show 2 full cards + a portion of the 3rd
       } else if (window.innerWidth >= 768) {
-        setCardsPerView(2.1); // Medium screens: show 2 full cards + small part of the 3rd
+        setCardsPerView(2); // Show 2 full cards
       } else {
-        setCardsPerView(1); // Small screens: show only 1 card
+        setCardsPerView(1); // Show only 1 card on small screens
       }
     };
 
@@ -70,80 +70,110 @@ const Projects = () => {
   }, [currentIndex, cardsPerView]);
 
   const handleNext = () => {
-    if (currentIndex < newsData.length - cardsPerView) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
+  setCurrentIndex((prevIndex) => (prevIndex + 1) % newsData.length);
+};
 
-  const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
+const handlePrev = () => {
+  setCurrentIndex((prevIndex) =>
+    prevIndex === 0 ? newsData.length - 1 : prevIndex - 1
+  );
+};
+
 
   return (
-    <section className="py-16 px-4 md:px-20 bg-[#F6F6F6] relative">
+    <section className="bg-[#F6F6F6] relative w-[1512px] h-[580px] px-[6px] py-[40px] gap-[40px] 
+  md:w-[1512px] md:h-[834px] md:px-[56px] md:py-[40px] md:gap-[40px] 
+  sm:w-[375px] sm:h-[621px] sm:px-[16px] sm:py-[40px] sm:gap-[40px]">
+
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center text-left mb-6 gap-4">
-        <h2 className="text-2xl md:text-5xl font-medium">Discover our latest</h2>
-        <button className="flex items-center space-x-2 bg-black text-white px-4 py-2 rounded-full  md:w-auto w-fit">
-          <span>Media Center</span>
-          <FaArrowRight size={16} />
-        </button>
-      </div>
+      <div className="flex flex-col sm:w-[343px] sm:h-[99px] sm:gap-[24px] 
+    md:flex-row md:w-[1400px] md:h-[80px] md:justify-between md:items-center text-left mb-6">
+  <h2 className="font-['Helvetica Now Display'] font-medium text-[28px] md:text-[64px] leading-[125%] tracking-[0px] md:tracking-[0.5px]">
+  Discover our latest
+</h2>
+
+<button className="flex justify-center  items-center gap-[12px] bg-black text-white px-[16px] py-[10px] md:py-[8px] rounded-[100px] w-[141px] h-[40px] md:w-[157px]">
+  <span className="text-[14px] leading-[20px]  text-center font-medium tracking-[0] font-['Helvetica Now Display']">Media Center</span>
+  <FaArrowRight size={16} />
+</button>
+
+
+</div>
+
 
       {/* Carousel Container */}
-      <div className="relative overflow-hidden w-full">
-        {/* Left Button */}
-        <button
-          onClick={handlePrev}
-          className={`absolute lg:left-0 lg:top-1/3   md:top-1/4 transform -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-md z-20 hidden md:block ${
-            currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "opacity-100"
-          }`}
-          disabled={currentIndex === 0}
-        >
-          <FaArrowLeft size={16} />
-        </button>
+      <div className="relative overflow-hidden">
+  {/* Arrows Container */}
+  <div className="absolute top-1/2 left-0 right-0 transform -translate-y-1/2 flex justify-between items-center px-4 z-20 w-full h-[56px] md:block hidden">
+  {/* Left Button */}
+  <button
+    onClick={handlePrev}
+    className={`bg-black text-white p-3 rounded-full shadow-md absolute left-4 transform -translate-x-1/2 ${
+      currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "opacity-100"
+    }`}
+    disabled={currentIndex === 0}
+  >
+    <FaArrowLeft size={16} />
+  </button>
 
-        {/* Carousel */}
-        <div
-          className="flex transition-transform duration-500 ease-in-out space-x-3"
-          style={{
-            transform: `translateX(-${(currentIndex * 100) / cardsPerView}%)`,
-          }}
-        >
-          {newsData.map((news) => (
-            <div
-              key={news.id}
-              className={`flex-shrink-0 bg-white rounded-lg shadow-lg overflow-hidden`}
-              style={{
-                width: `${100 / cardsPerView}%`,
-              }}
-            >
-                           <img src={news.image} alt={news.title}   className="w-full h-auto  md:h-[180px] lg:h-[320px] object-cover aspect-[18/9]"
- />
-               <div className="p-4 ">
-                <p className="text-[16px] text-[#777777]">{news.date}</p>
-                <h3 className="text-[28px] md:text-[30px] lg:text-[41px] mt-3 font-medium leading-[125%]">
-                  {news.title}
-                </h3>
-                <p className="text-black text-[16px] md:text-[20px] mt-3 md:mt-2">{news.description}</p>
-              </div>
-            </div>
-          ))}
+  {/* Right Button */}
+  <button
+    onClick={handleNext}
+    className={`bg-black text-white p-3 rounded-full shadow-md absolute right-4 transform translate-x-1/2 ${
+      currentIndex >= newsData.length - cardsPerView ? "opacity-50 cursor-not-allowed" : "opacity-100"
+    }`}
+    disabled={currentIndex >= newsData.length - cardsPerView}
+  >
+    <FaArrowRight size={16} />
+  </button>
+</div>
+
+
+
+
+
+  {/* Carousel */}
+  <div
+    className="flex transition-transform duration-500 ease-in-out space-x-[20px] w-[1340px] h-[361px] md:w-[2820px] md:h-[592px]"
+    style={{
+      transform: `translateX(-${(currentIndex * 100) / cardsPerView}%)`,
+    }}
+  >
+    {newsData.map((news) => (
+      <div
+        key={news.id}
+        className="flex-shrink-0 bg-white rounded-lg shadow-lg overflow-hidden w-[320px] h-[361px] md:w-[690px] md:h-[592px]"
+      >
+        <img
+          src={news.image}
+          alt={news.title}
+          className="w-[320px] h-[148px] md:w-[690px] md:h-[320px] object-cover"
+        />
+
+        <div className="p-[20px] md:p-[28px] w-[320px] h-[213px] md:w-[690px] md:h-[272px] space-y-[40px]">
+          {/* Date Section */}
+          <p className="text-[#777777] mb-3 text-[14px] md:text-[16px] leading-[140%] font-helvetica font-normal md:font-medium">
+            {news.date}
+          </p>
+
+          {/* Title Section */}
+          <h3 className="font-helvetica text-[24px] md:text-[36px] lg:text-[40px] leading-[140%] font-medium tracking-[-0.25px] text-black mb-3">
+            {news.title}
+          </h3>
+
+          {/* Description Section */}
+          <p className="font-helvetica text-[16px] md:text-[20px] leading-[125%] font-medium text-black mt-3 md:mt-2">
+            {news.description}
+          </p>
         </div>
-
-        {/* Right Button */}
-        <button
-          onClick={handleNext}
-          className={`absolute right-3 lg:top-1/3  md:top-1/4 transform -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-md z-20 hidden md:block ${
-            currentIndex >= newsData.length - cardsPerView ? "opacity-50 cursor-not-allowed" : "opacity-100"
-          }`}
-          disabled={currentIndex >= newsData.length - cardsPerView}
-        >
-          <FaArrowRight size={16} />
-        </button>
       </div>
+    ))}
+  </div>
+
+  {/* Progress Bar */}
+  
+</div>
+
 
       {/* Progress Bar */}
       <div className="w-full h-1 bg-gray-300 rounded-full mt-6 relative">

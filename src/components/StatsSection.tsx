@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import React from "react";
 
 interface StatData {
   id: number;
@@ -43,49 +44,76 @@ const StatsSection = () => {
   const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    gsap.from(itemsRef.current, {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      stagger: 0.3,
-      ease: "power2.out",
-    });
+    if (!sectionRef.current) return;
+
+    gsap.fromTo(
+      itemsRef.current,
+      {
+        opacity: 0,
+        y: 50,
+        scale: 0.9,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.2,
+        stagger: 0.3,
+        ease: "power3.out",
+      }
+    );
   }, []);
 
   return (
-    <div ref={sectionRef} className="max-w-8xl mx-auto px-4 md:px-10 py-15">
+    <div ref={sectionRef} className="w-[375px] h-[1050px] gap-[40px] p-[40px_16px] 
+                                md:w-[1512px] md:h-[880px] md:gap-[60px] md:p-[40px_56px] space-y-6">
+
       {statsData.map((stat, index) => (
-        <div
-          key={stat.id}
-          ref={(el) => {
-            itemsRef.current[index] = el;
-          }}
-          className="flex flex-col md:flex-row  justify-between mb-10 pb-6 border-b border-gray-500/10"
-        >
-          {/* صورة */}
-          <div className="w-full md:w-1/2 lg:w-1/3">
-            <img
-              src={stat.image}
-              alt={stat.title}
-              className="w-full h-auto rounded-lg shadow-md object-cover"
-            />
+        <React.Fragment key={stat.id}>
+          {/* Top Divider for first element */}
+          {index === 0 && (
+            <div className="w-[343px] h-[1px] opacity-10 bg-black md:w-[1400px] md:mt-6 md:mb-6"></div>
+          )}
+
+          <div
+            ref={(el) => {
+              itemsRef.current[index] = el;
+            }}
+            className="w-[1400px] h-[200px] md:flex md:justify-between gap-6 md:gap-0 
+                       md:w-[1400px] md:h-[200px] 
+                       w-[343px] h-[285px]">
+            
+            {/* Image */}
+            <div className="w-[240px] h-[120px] md:w-[400px] md:h-[200px]">
+              <img
+                src={stat.image}
+                alt={stat.title}
+                className="w-full h-full rounded-lg shadow-md object-cover"
+              />
+            </div>
+
+            {/* Text Content */}
+            <div className="w-[343px] h-[141px] mt-3 md:mt-0 flex flex-col gap-[12px] md:w-[724px] md:h-[200px]">
+              <h2 className="w-[343px] h-[35px] text-[28px] leading-[125%] font-medium md:w-[724px] md:h-[50px] md:text-[40px]">
+                {stat.number}
+              </h2>
+
+              <div className="flex flex-col gap-[4px] md:gap-[12px]">
+                <p className="w-[343px] h-[30px] text-[24px] leading-[125%] font-medium md:w-[724px] md:h-[35px] md:text-[28px]">
+                  {stat.title}
+                </p>
+
+                {/* Description Under Subtitle */}
+                <p className="w-[343px] h-[60px] md:mt-3 mt-2 text-[14px] leading-[140%] font-normal md:w-[724px] md:h-[44px] md:text-[16px] md:font-[325]">
+                  {stat.description}
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* النصوص */}
-          <div className="w-full md:w-2/5 lg:w-2/5 ml-auto  flex flex-col items-start text-left">
-            <h2 className="text-[28px] md:text-[30px] lg:text-[40px] font-medium text-black w-full">
-              {stat.number}
-            </h2>
-
-            <p className="text-[24px] md:text-[28px] mt-3 md:mt-5 font-medium text-gray-700 w-full">
-              {stat.title}
-            </p>
-
-            <p className="text-[14px] md:text-[16px] text-gray-500 w-full max-w-lg mt-2 md:mt-4">
-              {stat.description}
-            </p>
-          </div>
-        </div>
+          {/* Bottom Divider for every item */}
+          <div className="w-[343px] h-[1px] opacity-10 bg-black md:w-[1400px] mt-6 mb-6"></div>
+        </React.Fragment>
       ))}
     </div>
   );
