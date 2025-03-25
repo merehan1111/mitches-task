@@ -36,13 +36,18 @@ const LeaderShip = () => {
   return (
     <div
       ref={containerRef}
-      className="w-[375px] h-[315px] px-[16px] py-[40px] md:w-[1512px] md:h-[280px] md:px-[56px] md:py-[40px] flex flex-col md:flex-row justify-between items-start gap-4"
+      className="w-full max-w-[1512px] px-4 py-10 
+                 sm:px-8 sm:py-12 
+                 md:px-16 md:py-16 
+                 lg:px-24 lg:py-20 
+                 flex flex-col md:flex-row justify-between items-start gap-6"
     >
       {/* Title Section */}
-      <div className="w-[343px] h-[20px] md:w-[576px] md:h-[35px] gap-[24px]">
+      <div className="w-full max-w-[576px]">
         <h2
           ref={titleRef}
-          className="w-[343px] h-[20px] text-[16px] md:w-[576px] md:h-[35px] md:text-[28px] font-medium leading-[125%] tracking-normal text-[#777777]"
+          className="text-[16px] sm:text-[20px] md:text-[28px] lg:text-[32px] 
+                     font-medium leading-[125%] tracking-normal text-[#777777]"
           style={{ fontFamily: "Helvetica Now Display" }}
         >
           LeaderShip
@@ -52,10 +57,13 @@ const LeaderShip = () => {
       {/* Text Section */}
       <p
         ref={textRef}
-        className="w-[343px] h-[175px] text-[28px] text-black md:w-[724px] md:h-[200px] md:text-[40px] font-medium leading-[125%] tracking-normal"
+        className="w-full max-w-[800px] 
+                     text-[20px] sm:text-[24px] md:text-[32px] lg:text-[40px] 
+                     font-medium leading-[125%] tracking-normal text-black"
         style={{ fontFamily: "Helvetica Now Display" }}
       >
-        We aim to innovate and listen closely to our customers to provide them with the best customer experience in every aspect.
+        We aim to innovate and listen closely to our customers to provide them
+        with the best customer experience in every aspect.
       </p>
     </div>
   );

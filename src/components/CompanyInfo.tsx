@@ -36,13 +36,13 @@ const CompanyInfo = () => {
   return (
     <div
       ref={containerRef}
-      className="w-[375px] h-[455px] px-[16px] py-[40px] md:w-[1512px] md:h-[330px] md:px-[56px] md:py-[40px] flex flex-col md:flex-row justify-between items-start gap-4"
+      className="w-full max-w-[1512px] px-4 py-8 md:px-[56px] md:py-[40px] flex flex-col md:flex-row justify-between items-start gap-4 lg:gap-6"
     >
       {/* العنوان */}
-      <div className="w-[343px] h-[20px] md:w-[576px] md:h-[35px] gap-[24px]">
+      <div className="w-full max-w-[576px]">
         <h2
           ref={titleRef}
-          className="w-[343px] h-[20px] text-[16px] md:w-[576px] md:h-[35px] md:text-[28px] font-medium leading-[125%] tracking-normal text-[#777777]"
+          className="text-[16px] md:text-[28px] lg:text-[32px]  font-medium leading-[125%] tracking-normal text-[#777777]"
           style={{ fontFamily: "Helvetica Now Display" }}
         >
           Our Story
@@ -52,7 +52,7 @@ const CompanyInfo = () => {
       {/* النص */}
       <p
         ref={textRef}
-        className="w-[343px] h-[315px] text-[28px] text-black md:w-[724px] md:h-[250px] md:text-[40px] font-medium leading-[125%] tracking-normal"
+        className="w-full max-w-[724px] text-[28px] md:text-[40px] lg:text-[40px] text-black font-medium leading-[125%] tracking-normal"
         style={{ fontFamily: "Helvetica Now Display" }}
       >
         We are a family-owned real estate development company based in Egypt.

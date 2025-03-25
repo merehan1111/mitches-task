@@ -86,30 +86,57 @@ const Location = () => {
   ];
 
   return (
-    <div className="bg-white px-4 py-10 sm:px-6 md:px-[56px] md:py-[40px] md:w-[1512px] md:h-[500px]">
-      <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8 items-start">
-        <div className="w-[576px] h-[35px] sm:w-[343px] sm:h-[30px]">
-          <h2 ref={(el) => { textRefs.current[0] = el; }} className="text-[#777777] font-helvetica font-medium text-[24px] md:text-[28px]">
+    <div className="bg-white px-4 py-10 sm:px-6 md:px-10 lg:px-[56px] md:py-[40px] max-w-[1512px] mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
+        <div className="w-full max-w-[576px]">
+          <h2
+            ref={(el) => {
+              textRefs.current[0] = el;
+            }}
+            className="text-[#777777] font-helvetica font-medium text-[24px] md:text-[28px]"
+          >
             Our Approach
           </h2>
         </div>
-        <div className="w-[343px] h-[340px] mt-6 md:mt-0 md:w-[724px] md:h-[420px] overflow-hidden">
+        <div className="w-full max-w-[724px] overflow-hidden">
           {items.map((item, index) => (
             <div key={index} className="flex flex-col items-start">
               <button
                 className="w-full flex items-center justify-between py-3 px-4 md:px-6 text-left text-black font-medium text-lg"
                 onClick={() => toggleItem(index)}
               >
-                <span ref={(el) => { textRefs.current[index + 1] = el; }} className="flex items-center text-[18px] sm:text-[20px] font-medium">
+                <span
+                  ref={(el) => {
+                    textRefs.current[index + 1] = el;
+                  }}
+                  className="flex items-center text-[18px] sm:text-[20px] font-medium"
+                >
                   <span className="mr-2 text-black">{item.number}</span>
                   {item.title}
                 </span>
-                <span ref={(el) => { iconRefs.current[index] = el; }} className="ml-auto">
-                  {openIndex === index ? <FaMinus className="text-black text-[13px]" /> : <FaPlus className="text-black text-[13px]" />}
+                <span
+                  ref={(el) => {
+                    iconRefs.current[index] = el;
+                  }}
+                  className="ml-auto"
+                >
+                  {openIndex === index ? (
+                    <FaMinus className="text-black text-[13px]" />
+                  ) : (
+                    <FaPlus className="text-black text-[13px]" />
+                  )}
                 </span>
               </button>
-              {openIndex !== index && <div className="w-[93%] border-[0.2px] border-[#cccccc] mx-auto"></div>}
-              <div ref={(el) => { contentRefs.current[index] = el; }} className="overflow-hidden px-4 md:px-6 text-black text-[16px]" style={{ height: 0, opacity: 0 }}>
+              {openIndex !== index && (
+                <div className="w-[93%] border-[0.2px] border-[#cccccc] mx-auto"></div>
+              )}
+              <div
+                ref={(el) => {
+                  contentRefs.current[index] = el;
+                }}
+                className="overflow-hidden px-4 md:px-6 text-black text-[16px]"
+                style={{ height: 0, opacity: 0 }}
+              >
                 {item.content && <p className="py-4">{item.content}</p>}
               </div>
             </div>
