@@ -25,7 +25,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-screen overflow-hidden hero">
       {/* 🔹 خلفية الصورة  */}
       <div className="absolute inset-0 z-[-1] w-full min-h-screen sm:min-h-[620px] lg:min-h-[800px] xl:min-h-[900px] px-4 sm:px-[16px] lg:px-[56px] xl:px-[80px] pt-[50px] lg:pt-[120px] pb-[50px] lg:pb-[120px] pr-0 lg:pr-[600px] xl:pr-[700px] sm:pr-[16px]">
         <Image
@@ -41,7 +41,10 @@ const HeroSection = () => {
       {/* 🔹 شريط التنقل */}
       <nav className="absolute top-0 left-0 w-full h-[60px] md:h-[100px] flex justify-between items-center bg-gradient-to-b from-black to-transparent text-white px-4 md:px-14 py-4 md:py-6">
         {/* اللوجو */}
-        <h1 className="text-2xl md:text-3xl font-bold">G Developments</h1>
+        <h1 className="text-2xl md:text-2xl lg:text-3xl font-bold w-[200px] whitespace-nowrap">
+  G Developments
+</h1>
+
 
         {/* قائمة سطح المكتب */}
         <div className="hidden md:flex gap-6 items-center">
@@ -83,30 +86,30 @@ const HeroSection = () => {
         </div>
       )}
 
-      {/* 🔹 نص الـ Hero Section */}
-      <div className="absolute top-[60%] left-4 ml-4 md:left-12 text-white text-left transform -translate-y-1/4 w-full max-w-[956px] md:max-w-[90%] lg:max-w-[80%] xl:max-w-[70%]">
-        <h1
-          ref={titleRef}
-          className="font-[Helvetica] font-medium text-[32px] sm:text-[40px] md:text-[90px] lg:text-[120px] xl:text-[140px] leading-[125%] tracking-wide w-full"
-        >
-          About us
-        </h1>
+<div className="absolute top-[60%] left-4 md:left-12 text-white text-left transform -translate-y-1/4 w-full max-w-[956px] px-4 md:px-0">
+  <h1
+    ref={titleRef}
+    className="font-[Helvetica] font-medium text-[10vw] sm:text-[40px] md:text-[90px] lg:text-[120px] leading-[125%] tracking-[0%] w-full max-w-[956px]"
+  >
+    About us
+  </h1>
 
-        <p
-          ref={descRef}
-          className="mt-2 md:mt-4 tracking-wide leading-[125%] text-[18px] sm:text-[22px] md:text-[28px] lg:text-[32px] font-medium w-full"
-          style={{ fontFamily: "Helvetica Now Display", letterSpacing: "0%" }}
-        >
-          Real Estate developer blending 
-          <br className="block sm:hidden" />
-          timeless design with 
-          <br className="hidden sm:inline" />
-          comfortable living.
-        </p>
-      </div>
+  <p
+    ref={descRef}
+    className="mt-2 md:mt-4 tracking-wide leading-[125%] text-[5vw] sm:text-[24px] md:text-[28px] w-full max-w-[956px] font-medium"
+    style={{ fontFamily: "Helvetica Now Display", letterSpacing: "0%" }}
+  >
+    Real Estate developer blending <br className="block md:hidden" />
+    timeless <br className="hidden md:inline" /> design with <br className="block md:hidden" />
+    comfortable living.
+  </p>
+</div>
 
     </div>
   );
 };
 
 export default HeroSection;
+
+
+

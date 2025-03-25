@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { HiOutlineArrowNarrowLeft, HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { AiOutlinePlus } from "react-icons/ai";
-import Image from "next/image"; // ✅ Use Next.js Image for optimization
+import Image from "next/image"; 
 
 const teamData = [
   { id: 1, name: "Akram Ziyad", position: "Vice President - Strategy", image: "/persone1.png", details: "Akram leads the strategic vision and growth of the company, ensuring long-term success and innovation." },
@@ -30,7 +30,7 @@ const TeamCarousel = () => {
 
     const handleScroll = () => {
       if (scrollRef.current) {
-        const currentScrollRef = scrollRef.current; // ✅ Fix ref issue
+        const currentScrollRef = scrollRef.current; 
         const scrollLeft = currentScrollRef.scrollLeft;
         const maxScroll = currentScrollRef.scrollWidth - currentScrollRef.clientWidth;
         const minProgress = 100 / teamData.length;
@@ -40,7 +40,7 @@ const TeamCarousel = () => {
       }
     };
 
-    const currentRef = scrollRef.current; // ✅ Fix ref issue
+    const currentRef = scrollRef.current; 
     if (currentRef) {
       handleScroll();
       currentRef.addEventListener("scroll", handleScroll);
@@ -72,9 +72,9 @@ const TeamCarousel = () => {
   ref={scrollRef} 
   className="flex overflow-x-auto scroll-smooth snap-x gap-4 p-4 w-full scrollbar-hide"
   style={{ 
-    touchAction: "auto",  // ✅ Allow touch gestures
-    WebkitOverflowScrolling: "touch", // ✅ Ensures smooth scrolling on iOS
-    overflowX: "scroll"  // ✅ Ensures scrolling is enabled
+    touchAction: "auto",  
+    WebkitOverflowScrolling: "touch", 
+    overflowX: "scroll"  
   }}
 >
 
@@ -82,7 +82,7 @@ const TeamCarousel = () => {
           <div key={member.id} ref={(el) => { itemsRef.current[index] = el; }}
             className="relative flex-shrink-0 w-[280px] sm:w-[320px] md:w-[500px] h-[380px] md:h-[500px] bg-[#F6F6F6] border-t border-gray-300 rounded-lg shadow-lg overflow-hidden snap-center">
 
-            {/* ✅ Optimized Next.js Image */}
+          
             <Image src={member.image} alt={member.name} layout="fill" objectFit="cover" className="rounded-lg" priority />
 
             {/* Overlay Text */}

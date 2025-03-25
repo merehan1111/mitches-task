@@ -6,7 +6,7 @@ import { ArrowUp } from "lucide-react";
 
 const Footer = () => {
   const footerRef = useRef(null);
-  const arrowRef = useRef(null);
+  const arrowRef = useRef<HTMLAnchorElement | null>(null);
 
   useEffect(() => {
     if (arrowRef.current) {
@@ -18,6 +18,31 @@ const Footer = () => {
         ease: "power1.inOut",
       });
     }
+  }, []);
+  
+  // Smooth Scroll to Hero Section
+  useEffect(() => {
+    const handleScroll = (e: MouseEvent) => {
+      e.preventDefault();
+      const heroSection = document.getElementById("hero");
+
+      if (heroSection) {
+        heroSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    };
+
+    const arrow = arrowRef.current;
+    if (arrow) {
+      arrow.addEventListener("click", handleScroll);
+    }
+
+    return () => {
+      if (arrow) {
+        arrow.removeEventListener("click", handleScroll);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -54,9 +79,10 @@ const Footer = () => {
         {/* Brand & Interest Form */}
         <div className="flex flex-col md:flex-row justify-between items-start mt-8 md:mt-12">
        
-          <h2 className="text-3xl md:text-4xl lg:text-8xl  whitespace-nowrap relative top-72  md:top-35 font-bold tracking-wider">
-            G Developments
-          </h2>
+        <h2 className="w-[400px] md:w-[500px] lg:w-[800px] text-3xl md:text-4xl lg:text-8xl whitespace-nowrap relative top-72 md:top-35 font-bold tracking-wider text-center mx-auto">
+  G Developments
+</h2>
+
           <div className="md:mt-6 mt-[-20px] lg:mt-6 lg:mr-32 md:mr-32">
             <h3 className="text-white uppercase tracking-wider text-sm md:text-base mb-2">
               INTEREST FORM
@@ -69,11 +95,15 @@ const Footer = () => {
         </div>
 
         {/* Back to Top Icon */}
-        <div className="absolute top-4 right-6 md:right-12">
-          <a ref={arrowRef} href="#" className="p-2 rounded-full text-white shadow-lg">
-            <ArrowUp size={30} />
-          </a>
-        </div>
+        <div className="fixed top-10 right-6 md:right-12 z-50">
+      <a
+        ref={arrowRef}
+        href="#"
+        className="flex items-center justify-center w-10 h-10 md:w-10 md:h-10 bg-white text-black shadow-lg rounded-full animate-bounce transition-all duration-300 hover:scale-110"
+      >
+        <ArrowUp size={30} />
+      </a>
+    </div>
 
         {/* Social & Contact Info */}
        {/* Middle Section */}
